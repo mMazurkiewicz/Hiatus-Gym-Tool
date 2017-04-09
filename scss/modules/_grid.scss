@@ -1,0 +1,24 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.row {
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+$columnsNo: 7;
+@for $i from 1 through $columnsNo {
+    .col-#{$i} {
+        width: (100%/$columnsNo)*$i;
+    }
+}
+
+[class*='col-'] {
+    float: left;
+}

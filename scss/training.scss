@@ -1,0 +1,172 @@
+@import 'modules/_variables';
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: $mainTextBlack;
+    margin: 0;
+}
+
+.shadow {
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+header {
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $mainTextWhite;
+    text-align: center;
+    height: 20%;
+    width: 100%;
+    background-color: $mainColor;
+    margin-bottom: 30px;
+
+    div {
+        font-size: 2em;
+        display: inline-block;
+    }
+}
+
+#exList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    text-align: center;
+
+    .cycles {
+        border-bottom: 1px solid $additionalTextBlack;
+    }
+
+    .cyclesNum {
+        width: 100px;
+        text-align: center;
+    }
+
+    .exercise {
+        color: white;
+        display: inline-block;
+        margin: 20px 50px;
+        padding: 10px 30px;
+        background-color: $mainColor300;
+    }
+}
+
+div.startButton {
+    &::after {
+        content: '';
+        display: inline-block;
+        position: relative;
+        width: 0;
+        height: 0;
+        top: 15px;
+        left: 22px;
+        border-top: 10px solid transparent;
+        border-left: 12px solid white;
+        border-bottom: 10px solid transparent;
+    }
+    position: fixed;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $startButton;
+    bottom: 60px;
+    right: 27px;
+}
+
+div.addButton {
+    color: $mainTextWhite;
+    position: fixed;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $secondColor;
+    bottom: 130px;
+    right: 27px;
+    text-align: center;
+
+    p {
+        font-size: 1.8em;
+        margin: 5px auto;
+    }
+}
+
+#addNewEx {
+    z-index: 99;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+
+    .addEx {
+        color: $additionalTextWhite;
+        font-size: 1em;
+        background-color: $mainColor300;
+        padding: 5px 20px;
+        border-radius: 2px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    input {
+        width: 100px;
+        margin: 20px 10px;
+        text-align: center;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid $additionalTextBlack;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .error {
+        opacity: 0;
+        color: $secondColor;
+        font-size: 0.7em;
+        margin-bottom: 10px;
+    }
+}
+
+.start {
+    z-index: 99;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    color: $mainTextBlack;
+    text-align: center;
+    .stop {
+      color: $mainTextWhite;
+      background-color: $secondColor;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      padding: 20px 0;
+    }
+    .exerciseName {
+      background-color: $mainColor;
+      color: $mainTextWhite;
+      font-size: 2em;
+      text-align: center;
+    }
+    .timer {
+      font-size: 5em;
+    }
+}

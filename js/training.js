@@ -11,6 +11,13 @@ $(function() {
     let form = $('form');
     let cyclesNum = $('.cyclesNum');
 
+    // start area
+    let startSection = $('.start');
+    let stopButton = $('.stop');
+    let exerciseName = $('.exerciseName');
+
+    // Training object
+    function Training() {};
 
     // get input value of cycles
     cyclesNum.blur(function() {
@@ -80,7 +87,23 @@ $(function() {
     })
 
     // start training
-    startButton.click(function(){
-      
+    startButton.click(function() {
+        let exercises = $('.exercise');
+        let train = {};
+        exercises.each(function(i) {
+            train['ex-' + i] = {
+                name: $(this).text(),
+                time: $(this).data('time'),
+                rest: $(this).data('rest')
+            }
+        })
+        console.log(train);
+        // var interval = setInterval(function() {
+        //     console.log('I will be invoke every 5s');
+        // }, 5000);
+
+
+
+        startSection.fadeIn(200);
     });
 })

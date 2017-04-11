@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HGT training page</title>
+    <link rel="stylesheet" type="text/css" href="style/training.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="start">
+            <div class="exerciseName"></div>
+            <div class="loop">PĘTLA: <span></span></div>
+            <div class="timer">30</div>
+            <div class="stop">STOP</div>
+        </div>
+
+        <div id="addNewEx">
+            <form action="#">
+                <div class="error">I need all fields</div>
+                <input type="text" name="exName" placeholder="exercise name">
+                <input type="number" name="exTime" placeholder="exercise time (sec)">
+                <input type="number" min="1" max="99" name="restTime" placeholder="rest (sec)">
+
+                <div class="addEx shadow">SAVE</div>
+            </form>
+        </div>
+        <header class="shadow">
+            <div class="trainingName" contenteditable="true">Training name</div>
+        </header>
+
+        <section id="exList">
+            <div class="cycles">
+                <p>Cycles:</p>
+                <input type="number" name="cycles" min="1" max="99" placeholder="0 - 99" class="cyclesNum">
+                <!-- <p contenteditable="true" class="cyclesNum">1</p> -->
+            </div>
+            <!-- <div class="exercise shadow" data-time="1" data-rest="2">aaa</div>
+            <div class="exercise shadow" data-time="3" data-rest="4">bbb</div>
+            <div class="exercise shadow" data-time="5" data-rest="6">ccc</div> -->
+        </section>
+        <section class="buttons">
+            <div class="addButton shadow">
+                <p>+</p>
+            </div>
+            <div class="startButton shadow"></div>
+        </section>
+
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/training.js"></script>
+</body>
+
+</html>

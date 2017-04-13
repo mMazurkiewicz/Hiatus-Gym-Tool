@@ -150,23 +150,38 @@ div.addButton {
     background-color: white;
     color: $mainTextBlack;
     text-align: center;
+
+    .flexColumn {
+        @include flexColumn;
+        width: 100%;
+        height: 100%;
+    }
+
     .stop {
-      color: $mainTextWhite;
-      background-color: $secondColor;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 2em;
-      padding: 20px 0;
+        color: $mainTextWhite;
+        background-color: $secondColor;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        padding: 20px 0;
     }
+
     .exerciseName {
-      background-color: $mainColor;
-      color: $mainTextWhite;
-      font-size: 2em;
-      text-align: center;
+        background-color: $mainColor;
+        color: $mainTextWhite;
+        font-size: 2em;
+        text-align: center;
+        width: 100%;
+        height: 20%;
+        position: fixed;
+        top: 0;
+        @include flexRow;
     }
+
     .timer {
-      font-size: 5em;
+        font-size: 5em;
+        margin-bottom: 20px;
     }
 }

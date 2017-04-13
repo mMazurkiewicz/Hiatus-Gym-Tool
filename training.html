@@ -10,11 +10,13 @@
 
 <body>
     <div class="container">
-
         <div class="start">
-            <div class="exerciseName"></div>
-            <div class="loop">PĘTLA: <span></span></div>
-            <div class="timer">30</div>
+            <div class="exerciseName shadow"></div>
+            <div class="flexColumn">
+
+                <div class="timer"></div>
+                <div class="loop">Loop: <span></span></div>
+            </div>
             <div class="stop">STOP</div>
         </div>
 
@@ -38,9 +40,9 @@
                 <input type="number" name="cycles" min="1" max="99" placeholder="0 - 99" class="cyclesNum">
                 <!-- <p contenteditable="true" class="cyclesNum">1</p> -->
             </div>
-            <!-- <div class="exercise shadow" data-time="1" data-rest="2">aaa</div>
-            <div class="exercise shadow" data-time="3" data-rest="4">bbb</div>
-            <div class="exercise shadow" data-time="5" data-rest="6">ccc</div> -->
+            <!-- <div class="exercise shadow" data-time="3" data-rest="0">prepare</div> -->
+            <div class="exercise shadow" data-time="5" data-rest="4">bbb</div>
+            <div class="exercise shadow" data-time="5" data-rest="0">ccc</div>
         </section>
         <section class="buttons">
             <div class="addButton shadow">
@@ -48,9 +50,6 @@
             </div>
             <div class="startButton shadow"></div>
         </section>
-
-
-
     </div>
 
 

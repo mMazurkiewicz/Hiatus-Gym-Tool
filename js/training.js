@@ -15,11 +15,10 @@ $(function() {
     let startSection = $('.start');
     let stopButton = $('.stop');
     let exerciseName = $('.exerciseName');
+    let timer = $('.timer');
+    let loop = $('span');
 
-    // Training object
-    function Training() {};
-
-    // get input value of cycles
+    // check 1-99 input value of cycles
     cyclesNum.blur(function() {
         let cyclesVal = cyclesNum.val();
         if (!(parseInt(cyclesVal) > 0 && parseInt(cyclesVal) < 100)) {
@@ -59,7 +58,8 @@ $(function() {
         let newEx = $('<div>', {
             class: 'exercise shadow',
             "data-time": exercise[1],
-            "data-rest": exercise[2]
+            "data-rest": exercise[2],
+            "data-finnished": false
         });
 
 
@@ -85,24 +85,71 @@ $(function() {
 
         addNewExSection.fadeOut(100);
     })
+    // make Timer Red
+    function makeTimerRed(i) {
+        if (i < 6) {
+            timer.css('color', 'red');
+        } else {
+            timer.css('color', 'inherit');
+        }
+    }
+
+    // workout function
+    function startWorkout(exercises, length, loop) {
+        let ex = 'ex-';
+        let order = 0;
+        let name = exercises[ex + order].name;
+        let time = exercises[ex + order].time;
+        let rest = exercises[ex + order].rest;
+        let interval = setInterval(function() {
+             
+            if (order === length) {
+                exerciseName.fadeOut(200);
+                timer.text('finished!');
+                clearInterval(interval);
+                return
+            }
+            if (time < 1) {
+                exerciseName.css("background-color", "#4CAF50");
+                exerciseName.text('rest!');
+                timer.text(rest);
+                makeTimerRed(rest);
+                rest--;
+            } else {
+                exerciseName.css("background-color", "#673AB7");
+                exerciseName.text(name);
+                timer.text(time);
+                makeTimerRed(time);
+                time--;
+            }
+            if (time < 1 && rest < 1) {
+                order++;
+                if (!(order === length)) {
+                    rest = exercises[ex + order].rest;
+                    name = exercises[ex + order].name;
+                    time = exercises[ex + order].time;
+                }
+            }
+
+        }, 1000)
+    }
 
     // start training
     startButton.click(function() {
         let exercises = $('.exercise');
-        let train = {};
+        let workout = {};
+        let loops = cyclesNum.val();
+
         exercises.each(function(i) {
-            train['ex-' + i] = {
+            workout['ex-' + i] = {
                 name: $(this).text(),
                 time: $(this).data('time'),
-                rest: $(this).data('rest')
+                rest: $(this).data('rest'),
+                fin: $(this).data('finished')
             }
         })
-        console.log(train);
-        // var interval = setInterval(function() {
-        //     console.log('I will be invoke every 5s');
-        // }, 5000);
 
-
+        startWorkout(workout, exercises.length, loops);
 
         startSection.fadeIn(200);
     });

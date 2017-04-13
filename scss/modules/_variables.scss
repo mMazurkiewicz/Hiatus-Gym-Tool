@@ -9,3 +9,14 @@ $unactiveTextWhite: rgba(255, 255, 255, 0.5);
 $mainTextBlack: rgba(0, 0, 0, 0.87);
 $additionalTextBlack: rgba(0, 0, 0, 0.54);
 $unactiveTextBlack: rgba(0, 0, 0, 0.38);
+@mixin flexColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flexRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

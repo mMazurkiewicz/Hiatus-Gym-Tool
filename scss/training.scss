@@ -41,17 +41,24 @@ header {
 
     .cycles {
         border-bottom: 1px solid $additionalTextBlack;
+        margin-bottom: 10px;
     }
 
     .cyclesNum {
         width: 100px;
         text-align: center;
+        border: none;
+        outline: none;
+        &:focus {
+          border: none;
+          outline: none;
+        }
     }
 
     .exercise {
         color: white;
         display: inline-block;
-        margin: 20px 50px;
+        margin: 10px 50px;
         padding: 10px 30px;
         background-color: $mainColor300;
     }
@@ -106,7 +113,7 @@ div.addButton {
     height: 100vh;
     background-color: white;
 
-    .addEx {
+    .addEx, .editEx {
         color: $additionalTextWhite;
         font-size: 1em;
         background-color: $mainColor300;

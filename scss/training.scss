@@ -38,7 +38,6 @@ header {
     align-items: center;
     z-index: 0;
     text-align: center;
-    position: relative;
 
     .cycles {
         border-bottom: 1px solid $additionalTextBlack;
@@ -62,7 +61,6 @@ header {
         margin: 10px 50px;
         padding: 10px 30px;
         background-color: $mainColor300;
-        position: absolute;
     }
 }
 

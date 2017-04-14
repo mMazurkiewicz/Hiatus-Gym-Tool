@@ -19,7 +19,8 @@ $(function() {
     let timer = $('.timer');
     let loopNumber = $('span');
     let audio = $('audio');
-    console.log(audio);
+    
+
     // play audio function
     function playSound(i) {
         console.log(i);

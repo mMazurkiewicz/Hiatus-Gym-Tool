@@ -261,12 +261,11 @@ $(function() {
             cyclesBorder.css({
                 "border-bottom": "1px solid rgba(0, 0, 0, 0.54)"
             });
-            // cyclesBorder.removeClass('animated shake');
         }
 
         exercises.each(function(i) {
             workout['ex-' + i] = {
-                name: $(this).text(),
+                name: $(this).data('name'),
                 time: $(this).data('time'),
                 rest: $(this).data('rest'),
                 fin: $(this).data('finished')

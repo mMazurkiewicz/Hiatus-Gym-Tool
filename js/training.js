@@ -18,7 +18,32 @@ $(function() {
     let exerciseName = $('.exerciseName');
     let timer = $('.timer');
     let loopNumber = $('span');
-
+    let audio = $('audio');
+    console.log(audio);
+    // play audio function
+    function playSound(i) {
+        console.log(i);
+        switch (i) {
+            case 0:
+                audio[5].play();
+                break;
+            case 1:
+                audio[4].play();
+                break;
+            case 2:
+                audio[3].play();
+                break;
+            case 3:
+                audio[2].play();
+                break;
+            case 4:
+                audio[1].play();
+                break;
+            case 5:
+                audio[0].play();
+                break;
+        }
+    }
     // check 1-99 input value of cycles
     cyclesNum.blur(function() {
         let cyclesVal = cyclesNum.val();
@@ -28,12 +53,12 @@ $(function() {
     })
     // add flex box to edit/add new exercise section
     function addFlex() {
-      addNewExSection.css({
-          'display': 'flex',
-          "flex-direction": 'column',
-          "justify-content": 'center',
-          "align-items": 'center'
-      })
+        addNewExSection.css({
+            'display': 'flex',
+            "flex-direction": 'column',
+            "justify-content": 'center',
+            "align-items": 'center'
+        })
     }
     // show add new exercise area
     showAddNewExSection();
@@ -151,20 +176,22 @@ $(function() {
                 clearInterval(interval);
                 return
             }
-            if (time < 1) {
+            if (time < 0) {
                 exerciseName.css("background-color", "#4CAF50");
                 exerciseName.text('rest!');
                 timer.text(rest);
                 makeTimerRed(rest);
+                playSound(rest);
                 rest--;
             } else {
                 exerciseName.css("background-color", "#673AB7");
                 exerciseName.text(name);
                 timer.text(time);
                 makeTimerRed(time);
+                playSound(time);
                 time--;
             }
-            if (time < 1 && rest < 1) {
+            if (time < 0 && rest < 0) {
                 order++;
                 if (!(order === length)) {
                     rest = exercises[ex + order].rest;
@@ -186,11 +213,11 @@ $(function() {
 
     // stop training button
     function stopTraining(inter) {
-      stopButton.click(function(){
-        clearInterval(inter);
-        startSection.fadeOut(200);
-        return;
-      })
+        stopButton.click(function() {
+            clearInterval(inter);
+            startSection.fadeOut(200);
+            return;
+        })
     }
 
     // start training
@@ -209,6 +236,7 @@ $(function() {
                 "font-size": "0.8em"
             })
             exList.append(exError);
+            return
         } else if ($('.exError')) {
             $('.exError').remove();
         }

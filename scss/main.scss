@@ -1,19 +1,16 @@
 // modules
 @import 'modules/_reset';
-@import 'modules/_grid.scss';
-// variables
-@import 'modules/_variables';
-// partials
-@import 'partials/_login.scss';
-// font roboto
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import 'modules/_grid.scss'; // variables
+@import 'modules/_variables'; // partials
+@import 'partials/_login.scss'; // font roboto
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: $mainTextWhite;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: $mainTextWhite;
 }
 
 .title h1 {
-  text-align: center;
+    text-align: center;
 }

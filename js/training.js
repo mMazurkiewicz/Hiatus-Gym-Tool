@@ -12,6 +12,7 @@ $(function() {
     let cyclesNum = $('.cyclesNum');
     let cyclesBorder = $('.cycles');
 
+
     // start area
     let startSection = $('.start');
     let stopButton = $('.stop');
@@ -19,7 +20,7 @@ $(function() {
     let timer = $('.timer');
     let loopNumber = $('span');
     let audio = $('audio');
-    
+
 
     // play audio function
     function playSound(i) {
@@ -52,6 +53,7 @@ $(function() {
             $(this).val('');
         }
     })
+
     // add flex box to edit/add new exercise section
     function addFlex() {
         addNewExSection.css({
@@ -101,7 +103,8 @@ $(function() {
         let newEx = $('<div>', {
             class: 'exercise shadow',
             "data-time": exercise[1],
-            "data-rest": exercise[2]
+            "data-rest": exercise[2],
+            "data-name": exercise[0]
         });
 
 
@@ -110,13 +113,19 @@ $(function() {
                 "opacity": "1"
             }, 200);
             return
+        } else if (exercise[1] < 0 || exercise[2] < 0) {
+          errorMsg.text("set time & rest above 0");
+          errorMsg.animate({
+              "opacity": "1"
+          }, 200);
+          return
         } else {
             errorMsg.animate({
                 "opacity": "0"
             }, 200);
         }
 
-        newEx.text(exercise[0]);
+        newEx.html(exercise[0] + '<br><span class="smallText"> exercise time: ' + exercise[1] + ' sec <br> rest time: ' + exercise[2] + ' sec</span>');
         exList.append(newEx);
 
         // reset inputs
@@ -304,10 +313,14 @@ $(function() {
             addExButton.detach();
 
             let $this = $(this);
-            console.log($this);
-            $('input[name="exName"]').val($this.text());
-            $('input[name="exTime"]').val($this.data('time'));
-            $('input[name="restTime"]').val($this.data('rest'));
+            let name = $this.data('name');
+            let time = $this.data('time');
+            let rest = $this.data('rest');
+            console.log(name, time, rest);
+
+            $('input[name="exName"]').val(name);
+            $('input[name="exTime"]').val(time);
+            $('input[name="restTime"]').val(rest);
 
             removeEditBtn();
             form.append(editButton);
@@ -317,19 +330,30 @@ $(function() {
                 let restVal = $('input[name="restTime"]').val();
                 let nameVal = $('input[name="exName"]').val();
                 console.log(timeVal, restVal, nameVal);
+
+                // validations
                 if (timeVal == '' || restVal == '' || nameVal == '') {
                     errorMsg.animate({
                         "opacity": "1"
                     }, 200);
                     return
+                } else if (timeVal < 0 || restVal < 0) {
+                  errorMsg.text("set time & rest above 0");
+                  errorMsg.animate({
+                      "opacity": "1"
+                  }, 200);
+                  return
                 } else {
                     errorMsg.animate({
                         "opacity": "0"
                     }, 200);
                 }
-                $this.text($('input[name="exName"]').val());
-                $this.attr('data-time', timeVal);
-                $this.attr('data-rest', restVal);
+
+                $this.html(nameVal + '<br><span class="smallText"> exercise time: ' + timeVal + ' sec <br> rest time: ' + restVal + ' sec</span>');
+                // $this.text($('input[name="exName"]').val());
+                $this.data('time', timeVal);
+                $this.data('rest', restVal);
+                $this.data('name', nameVal);
                 // reset inputs
                 resetInputs();
                 let editBtn = $('.editEx');

@@ -37,12 +37,12 @@
         <section id="exList">
             <div class="cycles">
                 <p>LOOPS:</p>
-                <input type="number" name="cycles" min="1" max="99" placeholder="1 - 99" class="cyclesNum">
+                <input type="number" value=1 name="cycles" min="1" max="99" placeholder="1 - 99" class="cyclesNum">
                 <!-- <p contenteditable="true" class="cyclesNum">1</p> -->
             </div>
-            <!-- <div class="exercise shadow" data-time="7" data-rest="7">prepare</div>
-            <div class="exercise shadow" data-time="7" data-rest="7">bbb</div>
-            <div class="exercise shadow" data-time="7" data-rest="7">ccc</div> -->
+            <div class="exercise shadow" data-time="7" data-rest="7" data-name="prepare">prepare</div>
+            <div class="exercise shadow" data-time="7" data-rest="7" data-name="bbb">bbb</div>
+            <div class="exercise shadow" data-time="7" data-rest="7" data-name="ccc">ccc</div>
         </section>
         <section class="buttons">
             <div class="addButton shadow">
@@ -60,6 +60,8 @@
     <audio src="sounds/5.mp3"></audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+    <!-- <script src="js/app.js"></script> -->
     <script src="js/training.js"></script>
 </body>
 

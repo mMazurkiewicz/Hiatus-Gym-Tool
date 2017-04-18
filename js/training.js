@@ -1,5 +1,15 @@
 $(function() {
     console.log('ready!');
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDlj4Atpsmlp020aVLzz0cP0uDKARcXEnQ",
+        authDomain: "hiatus-gym-tool.firebaseapp.com",
+        databaseURL: "https://hiatus-gym-tool.firebaseio.com",
+        projectId: "hiatus-gym-tool",
+        storageBucket: "hiatus-gym-tool.appspot.com",
+        messagingSenderId: "350865637772"
+    };
+    var dataBase = firebase.initializeApp(config);
 
     // variables
     let addButton = $('.addButton');
@@ -24,7 +34,6 @@ $(function() {
 
     // play audio function
     function playSound(i) {
-        console.log(i);
         switch (i) {
             case 0:
                 audio[5].play();
@@ -75,17 +84,17 @@ $(function() {
 
 
         })
-        addNewExSection.click(function() {
-            resetInputs();
-
-            removeEditBtn();
-
-            $(this).fadeOut(200);
-        })
     }
 
 
     //click somewhere else of form to exit addNewEx section
+    addNewExSection.click(function() {
+        resetInputs();
+
+        removeEditBtn();
+
+        $(this).fadeOut(200);
+    })
     form.click(function(event) {
         event.stopPropagation();
     })
@@ -149,7 +158,7 @@ $(function() {
         }
     }
 
-    // workoutInterval function
+    // interval training algorithm
     function startWorkout(exercises, length, loop) {
         let ex = 'ex-';
         let order = 0;
@@ -197,6 +206,7 @@ $(function() {
                 exerciseName.css("background-color", "#673AB7");
                 exerciseName.text(name);
                 timer.text(time);
+                // timer.fadeIn(100);
                 makeTimerRed(time);
                 playSound(time);
                 time--;
@@ -215,10 +225,8 @@ $(function() {
                     time = exercises[ex + order].time;
                 }
             }
-
         }, 1000);
         stopTraining(interval);
-
     }
 
     // stop training button
@@ -305,10 +313,10 @@ $(function() {
         editButton.text('EDIT');
 
 
-        exerciseButton.click(function(event) { // exercise button clik
-            addFlex();
-            addNewExSection.fadeIn(300);
+        exerciseButton.click(function(event) { // exercise button click
 
+            addNewExSection.fadeIn(300);
+            addFlex();
             addExButton.detach();
 
             let $this = $(this);

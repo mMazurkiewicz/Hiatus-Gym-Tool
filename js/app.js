@@ -1,24 +1,21 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-
-    // google sign in
-    gapi.load('auth2', function() {
-        gapi.auth2.init();
-    })
-    var button = document.querySelector('.login');
-
-    button.addEventListener('click', function() {
-        console.log('klik');
-    })
-
-
-    // firebase
+    // Initialize Firebase
     var config = {
-        apiKey: "your-api-key ",
-        databaseURL: "https://your-url.firebaseio.com",
+        apiKey: "AIzaSyDlj4Atpsmlp020aVLzz0cP0uDKARcXEnQ",
+        authDomain: "hiatus-gym-tool.firebaseapp.com",
+        databaseURL: "https://hiatus-gym-tool.firebaseio.com",
+        projectId: "hiatus-gym-tool",
+        storageBucket: "hiatus-gym-tool.appspot.com",
+        messagingSenderId: "350865637772"
     };
-    var app = firebase.initializeApp(config);
+    var dataBase = firebase.initializeApp(config);
 
-
+    var users = dataBase.database().ref('users');
+    users.on("value", function(data) {
+        console.log(data.val());
+    }, function(error) {
+        console.log("Error: " + error.code);
+    });
 
 });

@@ -45,7 +45,7 @@ header {
     }
 
     .cyclesNum {
-        width: 100px;
+        width: 150px;
         text-align: center;
         border: none;
         outline: none;
@@ -107,8 +107,9 @@ div.addButton {
     text-align: center;
 
     p {
+        line-height: 45px;
         font-size: 1.8em;
-        margin: 5px auto;
+        margin: 0 auto;
     }
 }
 
@@ -132,7 +133,7 @@ div.addButton {
     }
 
     input {
-        width: 100px;
+        width: 150px;
         margin: 20px 10px;
         text-align: center;
         border-top: none;
